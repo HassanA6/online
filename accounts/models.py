@@ -12,7 +12,11 @@ class UserManager(BaseUserManager):
         """
 
 
+
+
         Creates and saves a User with the given email and password.
+
+
 
 
         """
@@ -22,6 +26,9 @@ class UserManager(BaseUserManager):
 
         if not username:
             raise ValueError("Users must have an email address")
+
+# what dose user do?
+# explain
 
         user = self.model(
             email=self.normalize_email(email),
@@ -39,7 +46,11 @@ class UserManager(BaseUserManager):
         """
 
 
+
+
         Creates and saves a superuser with the given email and password.
+
+
 
 
         """
@@ -64,7 +75,6 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     RESTAURANT = 1
-
     CUSTOMER = 2
 
     ROLE_CHOICES = (
@@ -112,19 +122,20 @@ class User(AbstractBaseUser):
 
     REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
+
     objects = UserManager()
 
     def __str__(self):
         return self.email
 
     def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
+        """Does the user have a specific permission?"""
 
         # Simplest possible answer: Yes, always
         return self.is_admin
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
+        """Does the user have permissions to view the app `app_label`?"""
 
         # Simplest possible answer: Yes, always
         return True

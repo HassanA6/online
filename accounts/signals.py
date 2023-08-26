@@ -17,7 +17,8 @@ Receiver => post_save_create_profile_receiver
 
 @receiver(post_save, sender=User)
 def post_save_create_profile_receiver(sender, instance, created, **kwargs):
-    print("created", created)
+    print("created is triced", created)
+    print("instance is tracked", instance)
     if created:
         Userprofile.objects.create(user=instance)
         print("user profile created")

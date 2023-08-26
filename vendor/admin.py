@@ -5,8 +5,8 @@ from vendor.models import Vendor
 
 class VendorAdmin(admin.ModelAdmin):
     list_display = ('user', 'vendor_name', 'vendor_license', 'created_at', 'modified_at', 'is_approved')
-    list_display_links = ('vendor_name', 'vendor_license','user', 'modified_at', 'is_approved')
-
+    list_display_links = ('vendor_name', 'vendor_license','user', 'modified_at' )
+    list_editable = ('is_approved',)
 
 
 admin.site.register(Vendor, VendorAdmin)

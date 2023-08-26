@@ -1,0 +1,40 @@
+@keyframes show-toast{
+
+    0%{
+        bottom: -100px;
+    }
+    20%{
+        bottom: 100px;
+    }
+    100%{
+        bottom: -100px;
+    }
+
+    80%{
+        bottom: 100px;
+    }
+    
+}
+
+.show-notification {
+    /* Ensure notification is displayed on top */
+    position: fixed;
+    right: 20px;
+    bottom: 100%; /* Adjust this value as needed */
+    
+    /* Add your animation properties here */
+    animation: show-toast;
+    animation-duration: 7s;
+    z-index: 99;
+
+  }
+  
+
+.btn.btn-info {
+    cursor: pointer;
+    background-color: #17a2b8;
+    padding: auto;
+    font-size: 1px;
+
+
+}

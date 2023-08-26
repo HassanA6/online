@@ -1,31 +1,40 @@
-@keyframes show-toast{
+@keyframes myAnim {
+	0% {
+        bottom: -100%;
+	}
+    20% {
+        bottom: -100px;
+    }
+    80% {
+        bottom: -100px;
 
-    0%{
-        bottom: 0;
     }
-    100%{
-        bottom: 30px;
-    }
-
-    80%{
-        bottom: 30px;
-    }
+	100% {
+        bottom: -100%;
+	}
 }
 
-.show-notification{
+.show-notification {
 
-/* new one */
+    /* Ensure notification is displayed on top */
     position: fixed;
-    right: 20px;
     bottom: 100%;
-    animation: show-toast;
-    animation-duration: 7s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-name: show-toast;
+    right: 20px;
+    /* Add your animation properties here */
+    animation-name: myAnim;
+    animation-duration: 4s;
+    z-index: 99;
+
+  }
+  
+
+.btn.btn-info {
+    cursor: pointer;
+    background-color: #c74fab;
+    padding: 2px 1.75em;
+    font-size: 38px;
 
 
 }
+
+

@@ -9,17 +9,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class UserManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
-        """
-
-
-
-
-        Creates and saves a User with the given email and password.
-
-
-
-
-        """
 
         if not email:
             raise ValueError("Users must have an email address")
@@ -27,8 +16,8 @@ class UserManager(BaseUserManager):
         if not username:
             raise ValueError("Users must have an email address")
 
-# what dose user do?
-# explain
+        # what dose user do?
+        # explain
 
         user = self.model(
             email=self.normalize_email(email),
@@ -43,23 +32,12 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, first_name, last_name, username, email, password=None):
-        """
-
-
-
-
-        Creates and saves a superuser with the given email and password.
-
-
-
-
-        """
 
         user = self.create_user(
             email=self.normalize_email(email),
             username=username,
-            first_name=first_name,
             password=password,
+            first_name=first_name,
             last_name=last_name,
         )
         user.is_admin = True
@@ -122,7 +100,6 @@ class User(AbstractBaseUser):
 
     REQUIRED_FIELDS = ["username", "first_name", "last_name"]
 
-
     objects = UserManager()
 
     def __str__(self):
@@ -140,6 +117,12 @@ class User(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
 
+    def get_role(self):
+        if self.role == 1:
+            return "Restaurant"
+        elif self.role == 2:
+            return "Customer"
+
 
 class Userprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -150,9 +133,7 @@ class Userprofile(models.Model):
 
     cover_pic = models.ImageField(blank=True, upload_to="users/cover_pics", null=True)
 
-    address_line_1 = models.TextField(blank=True, null=True, max_length=255)
-
-    address_line_2 = models.TextField(blank=True, null=True, max_length=255)
+    address = models.TextField(blank=True, null=True, max_length=255)
 
     country = models.CharField(max_length=20, blank=True, null=True)
 
@@ -172,3 +153,6 @@ class Userprofile(models.Model):
 
     def __str__(self):
         return self.user.email
+
+    # def fullAddress(self):
+    #     return f"{self.address_line_1} {self.address_line_2}"

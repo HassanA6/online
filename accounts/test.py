@@ -1,6 +1,10 @@
 
 # create class 
 class Test :
+
+    def __new__(cls):
+        self.x=9
+        print("x is in the new dunder" sellf.x)
     def __init__(self):
         self.x=5
 

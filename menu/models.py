@@ -16,6 +16,12 @@ class Category(models.Model):
         verbose_name = "category"
         verbose_name_plural = "Categories"
 
+
+    def clean(self):
+        self.category_name = self.category_name.capitalize()
+        # self.slug = slugify(self.category_name)
+
+
     def __str__(self):
         return self.category_name
 
@@ -25,7 +31,7 @@ class FoodItem(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     food_title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.CharField(max_length=200)
+    description = models.TextField(max_length=200)
     price = models.DecimalField(max_digits=5, decimal_places=2)
     image = models.ImageField(upload_to="foodImage", blank=True, null=True)
     is_available = models.BooleanField(default=True)

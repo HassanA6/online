@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+{% include 'includes/alert.html' %} 
+<!-- Main Section Start -->
+<div class="main-section">
+    {% include 'includes/cover.html' %}
+    <div class="page-section account-header buyer-logged-in">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <!-- Use  Sidebar from sidebar -->
+                        {% include 'includes/v_sidebar.html' %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            
+                            <h2>Build your food menu</h2>
+                            <!-- My Restaurants Form Start -->
+                            <hr style="width:75%">
+                            <button class="btn btn-secondary" onclick="history.back();"><i class="fa fa-angle-left"></i>&nbsp;Back</button>
+
+                            <h3> Add new Category</h3>
+                            <hr style="height:2px;border-width:0;color:gray;background-color:gray">                           
+                                <form  action="{% url 'addCategory' %}" method = 'post'>
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="category">Category Name</label>
+                                        {{form.category_name}}
+                                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="category">Descreption</label>
+                                        {{form.description}}
+                                    </div>
+
+                                    {% for field in form%}
+                                    {% if field.errors%}
+                                    <div class="alert alert-danger">
+                                        {% for error in field.errors %}
+                                            <li style="color:red;">{{error}}</li>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    
+                                    <button type="submit" class="btn btn-info"><i class="fa fa-check"></i>&nbsp;Create Category</button>
+                                </form>
+                                
+                            <!-- My Restaurants Form End -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+
+
+
+
+{% endblock %}
+

@@ -20,6 +20,7 @@
     <link href="{% static 'assets/css/cs-foodbakery-plugin.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/bootstrap-slider.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/custom.css' %}" rel="stylesheet">
+
     <!-- online css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -42,16 +43,15 @@
 
 <body>
 
-<!-- Load NAVBAR -->
-{% include 'includes/navbar.html' %}
+    {% include 'includes/navbar.html' %}
 
-<!-- Load content -->
+    {% block content %}
 
-{% block content %}
+    {% endblock %}
 
-{% endblock %}
-<!-- Load footer -->
-{% include 'includes/footer.html' %}
+
+    {% include 'includes/footer.html' %}
+
 
 
 

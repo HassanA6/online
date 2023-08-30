@@ -6,7 +6,7 @@ def allow_only_image_upload(value):
     ex = ["jpg", "jpeg", "png", "gif"]
     ex_valid = os.path.splitext(value.name)[1][1:].lower()
 
-    if not ex in ex_valid:
+    if ex_valid not in ex:
         raise ValidationError(
             "Only Image files are allowed Allow extensions are: jpg, jpeg, png, gif"
         )

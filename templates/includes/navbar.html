@@ -72,24 +72,24 @@
 								</div>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-
-							{% if user.is_authenticated %}
 							<div class="login-option">
+								<span>
+									<a style="font-size:8px;" href="{% url 'marketplace' %}" class="btn btn-outline-danger text-uppercase font-weight-bold text-center">Marketplace</a>
+								</span>
 
-								<span><a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'MyAccount' %}">Myaccount</a></span>
-								<span><a class="cs-color cs-popup-joinus-btn login-popup text-danger" href="{% url 'logout' %}">Logout</a></span>
-							</div>
-							{% else %}
-
-
-								<div class="login-option">
-									<span><a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'login' %}">Login</a></span>
+								{% if user.is_authenticated %}
+									<span><a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'MyAccount' %}">Myaccount</a></span>
+									<span><a class="cs-color cs-popup-joinus-btn login-popup text-danger" href="{% url 'logout' %}">Logout</a></span>
+								{% else %}
+								<span>
+									<a class="cs-color cs-popup-joinus-btn login-popup" href="{% url 'login' %}">Login</a>
+								</span>
 									
 									/ <span><a href="{% url 'register' %}" class="cs-color cs-popup-joinus-btn login-popup ml-0">Register</a></span>
 									
 									
 									
-									<a class="get-start-btn" href="{% url 'registerVendor' %}">
+									<a style="font-size:8px;" class="get-start-btn" href="{% url 'registerVendor' %}">
 										Register
 										Restaurant </a>
 								</div>
